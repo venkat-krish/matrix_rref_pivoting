@@ -2,11 +2,12 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-
 """
-    Row reduced echlon form
+    row_reduced_echelon() takes mxn matrix and the significant digit value as an argument. 
+    It applies RREF operations on the matrix with round-off of significant digit.
+    @return reduced Matrix 
 """
-def row_reduced_echlon(M, sd):   
+def row_reduced_echelon(M, sd):   
     if not M: return
     lead = 0
     rowCount = len(M)
@@ -47,7 +48,7 @@ if __name__ == "__main__":
 
     print("---"*30 +"\n\t\t\t\t with Pivoting \t\t\twithout Pivoting\n"+ "---"*30 +"\nSignificant Digit\t|\t X1 \t|\t X2 \t|\t X1 \t|\t X2 \t|\n"+ "---"*30)
     for s in range(3, 8):
-        rref_m = row_reduced_echlon(mtx_p, s)
-        rref_mp = row_reduced_echlon(mtx_wp, s)
+        rref_m = row_reduced_echelon(mtx_p, s)
+        rref_mp = row_reduced_echelon(mtx_wp, s)
 
         print("\t{0} \t\t| {1} \t| {2} \t| {3} \t\t| {4} \t|".format(s, round(rref_m[0][2], s), round(rref_m[1][2], s), round(rref_mp[0][2], s), round(rref_mp[1][2],s)))
